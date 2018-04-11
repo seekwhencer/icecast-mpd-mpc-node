@@ -1,10 +1,10 @@
-# node-playlist-automation
+# icecast-mpd-mpc-node
 
 This Node.js app creates a audio streaming scenario on a raspberry pi with icecast and music player daemon.
  
 The main use of this app is
 
-- to create the specific configuration files for icecast and mpd
+- to create the specific configur_*ation files for icecast and mpd
 - to run start and stop icecast and mpd
 - to interact with mpd with mpc via ...
 
