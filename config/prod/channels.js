@@ -11,10 +11,10 @@ module.exports = [
                 }
             }
         }
-    },/*
+    },
     {
         name: "Second Channel",
-        autostart: false,
+        autostart: true,
         mpd: {
             config: {
                 port: 6200,
@@ -27,7 +27,7 @@ module.exports = [
     },
     {
         name: "Third Channel",
-        autostart: false,
+        autostart: true,
         mpd: {
             config: {
                 port: 6300,
@@ -37,5 +37,5 @@ module.exports = [
                 }
             }
         }
-    }*/
+    }
 ];

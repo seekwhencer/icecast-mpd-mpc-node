@@ -20,14 +20,14 @@ module.exports = {
         log_file: "/data/log/mpd_playlist.log",
         buffer_before_play: "30%",
         port: 6600,
-        log_level: "verbose",
+        log_level: "default", //verbose
         bind_to_address: "127.0.0.1",
         zeroconf_enabled: "yes",
-        zeroconf_name: "Playlist Automation",
+        zeroconf_name: "piradio",
         audio_output: {
             type: "shout",
             encoding: "mp3",
-            name: "Playlist Automation",
+            name: "piradio",
             host: "localhost",
             port: 8100,
             mount: "/playlist",

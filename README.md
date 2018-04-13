@@ -96,7 +96,8 @@ sudo apt-get install mpd mpc -y
 OR:
 
 ```bash
-        
+cd /data/apps/icecast-mpd-mpc-node
+sh config/install_mpd.sh
 ```
 
 

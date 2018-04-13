@@ -1,5 +1,5 @@
 module.exports = {
-    name: "icecast-mpd-mpc-node",
+    name: "piradio",
     bin: "/data/apps/icecast2/icecast",
     autostart: true,
     checkup_delay: 100,
@@ -15,7 +15,7 @@ module.exports = {
     config: {
         location: "Home",
         hostname: "localhost",
-        admin: "....",
+        admin: "",
         limits: {
             clients: 100,
             sources: 10,

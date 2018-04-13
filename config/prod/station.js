@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'icecast-mpd-mpc-node',
+    name: 'piradio',
     storage_path: 'storage',
-    flush_storage: false,
+    flush_storage: true,
     load_channels: true,
     add_channel_delay: 100,
     path : {
