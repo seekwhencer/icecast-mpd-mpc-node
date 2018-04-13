@@ -93,6 +93,13 @@ cp -R ~/icecast-2.3.99.3/admin /data/apps/icecast2/
 sudo apt-get install mpd mpc -y
 ```
 
+OR:
+
+```bash
+        
+```
+
+
 #### disabling service
 ```bash
 sudo systemctl disable mpd

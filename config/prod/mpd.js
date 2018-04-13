@@ -1,5 +1,6 @@
 module.exports = {
-    bin: "/usr/bin/mpd",
+    bin: "/usr/local/bin/mpd",
+    start_delay: 100,
     path : {
         config : "storage/mpd",
         music: "/data/storage/music",
@@ -19,14 +20,14 @@ module.exports = {
         log_file: "/data/log/mpd_playlist.log",
         buffer_before_play: "30%",
         port: 6600,
-        log_level: "default",
+        log_level: "verbose",
         bind_to_address: "127.0.0.1",
         zeroconf_enabled: "yes",
-        zeroconf_name: "icecast-mpd-mpc-node",
+        zeroconf_name: "Playlist Automation",
         audio_output: {
             type: "shout",
             encoding: "mp3",
-            name: "icecast-mpd-mpc-node",
+            name: "Playlist Automation",
             host: "localhost",
             port: 8100,
             mount: "/playlist",

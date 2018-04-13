@@ -1,6 +1,8 @@
 module.exports = {
     name: "icecast-mpd-mpc-node",
     bin: "/data/apps/icecast2/icecast",
+    autostart: true,
+    checkup_delay: 100,
     run: '',
     path: {
         config: "storage/icecast",
@@ -13,15 +15,15 @@ module.exports = {
     config: {
         location: "Home",
         hostname: "localhost",
-        admin: "----",
+        admin: "....",
         limits: {
             clients: 100,
             sources: 10,
-            threadpool: 5,
+            threadpool: 20,
             "queue-size": 524288,
             "client-timeout": 30,
             "header-timeout": 15,
-            "source-timeout": 10,
+            "source-timeout": 30,
             "burst-on-connect": 1,
             "burst-size": 65535
         },
@@ -48,7 +50,7 @@ module.exports = {
         logging: {
             accesslog: "icecast_access.log",
             errorlog: "icecast_error.log",
-            loglevel: 3,
+            loglevel: 4,
             logsize: 10000,
         },
         security: {
