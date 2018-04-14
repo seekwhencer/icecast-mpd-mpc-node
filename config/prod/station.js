@@ -3,7 +3,7 @@ module.exports = {
     storage_path: 'storage',
     flush_storage: true,
     load_channels: true,
-    add_channel_delay: 100,
+    add_channel_delay: 1000,
     path : {
         script : ''
     }

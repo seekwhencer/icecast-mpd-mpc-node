@@ -127,7 +127,7 @@ channel.mpc
 
 ````bash
 # mpd per channel
-channel.mpd = mpd
+channel.mpd
  
 # function
 mpd.on
@@ -148,7 +148,7 @@ mpd.getOptions
 ### mpc
 
 ````bash
-channel.mpc = mpc
+channel.mpc
   
 # function
 mpc.on

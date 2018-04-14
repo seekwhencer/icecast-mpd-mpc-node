@@ -1,6 +1,10 @@
 module.exports = {
-    bin: "/usr/local/bin/mpd",
-    start_delay: 100,
+    bin: "/usr/bin/mpd",
+    ready_delay: 200,
+    skip_timeout: 10000,
+    debug : {
+        stderr : false
+    },
     path : {
         config : "storage/mpd",
         music: "/data/storage/music",
@@ -18,10 +22,11 @@ module.exports = {
         db_file: "/data/apps/mpd/mpd.cache",
         pid_file: "/data/apps/mpd/playlist.pid",
         log_file: "/data/log/mpd_playlist.log",
-        buffer_before_play: "30%",
+        buffer_before_play: "50%",
+        audio_buffer_size: "16384",
         port: 6600,
-        log_level: "default", //verbose
-        bind_to_address: "127.0.0.1",
+        log_level: "secure", //verbose
+        bind_to_address: "0.0.0.0",
         zeroconf_enabled: "yes",
         zeroconf_name: "piradio",
         audio_output: {

@@ -2,7 +2,7 @@ module.exports = {
     name: "piradio",
     bin: "/data/apps/icecast2/icecast",
     autostart: true,
-    checkup_delay: 100,
+    checkup_delay: 500,
     run: '',
     path: {
         config: "storage/icecast",
