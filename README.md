@@ -105,7 +105,6 @@ sudo systemctl disable mpd
 
 #### Folder
 ```bash
-mkdir /data/apps/mpd
 mkdir /data/storage/music
 ```
 
@@ -249,4 +248,18 @@ if you completed the vagrant setup, save the VM state with VirtualBox directly o
 To load the VM state, enter `vagrant suspend`.
  
 You can skip the icecast build from source. Inside the VM you can use: `sudo apt-get install icecast2`
+ 
+Before the first VM up, change the the VM port when changing the stream port.
+Edit the `Vagrantfile` and change the `guest` port.
+
+```
+    config.vm.network "forwarded_port", guest: 8100, host: 8100, host_ip: "127.0.0.1"
+```
+
+If the VM is running and you want to change the port later, do it in VirtualBox directly under: 
+
+ - settings of the vm
+ - network > adapter > advanced > port forwarding
+ - add a new rule or change an existing
+
 
