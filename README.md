@@ -161,7 +161,7 @@ n latest
 sudo reboot
 ```
 
-# PM2
+## PM2
 ```bash
 # install it
 npm install pm2 -g
@@ -244,8 +244,8 @@ To use the `Vagrantfile` install:
 - Vagrant VB Guest Additions 
 
 Then set it up like on the raspberry pi - but replace the user `pi` with the user `vagrant`. Don't forget:
-if you completed the vagrant setup, save the VM state with VirtualBox directly or with a `vagrant halt`.
-To load the VM state, enter `vagrant suspend`.
+if you completed the vagrant setup, save the VM state with VirtualBox directly or with a `vagrant suspend`.
+To load the VM state, enter `vagrant resume`.
  
 You can skip the icecast build from source. Inside the VM you can use: `sudo apt-get install icecast2`
  
@@ -261,5 +261,23 @@ If the VM is running and you want to change the port later, do it in VirtualBox 
  - settings of the vm
  - network > adapter > advanced > port forwarding
  - add a new rule or change an existing
+
+#### run
+```bash
+# start the vm
+vagrant up
+ 
+# save the vm state
+vagrant suspend
+ 
+# resume the saved state
+vagrant resume
+ 
+# destroy the vm
+vagrant destroy
+```
+
+But beware: if you're destroying the vm, all installed things gone lost - except the shared folder.
+After this you have to repeat the whole setup. :)  yay!
 
 
