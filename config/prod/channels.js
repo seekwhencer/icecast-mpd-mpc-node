@@ -1,6 +1,6 @@
 module.exports = [
     {
-        name: "1st Channel",
+        name: "One",
         autostart: true,
         mpd: {
             config: {
