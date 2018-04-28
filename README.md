@@ -1,9 +1,31 @@
 # node-playlist-automation
 
-This a node.js app to generate smart playlists and start playlist by timetable.
-Developed by using a Raspberry Pi 3 but usable on every Ubuntu / Debian platform.
+With this app:
 
-# Permissions
+- generate configuration files for icecast2 audio streaming server
+- generate configuration files for music player daemon (MPD)
+- create multiple streams as endpoints as channels
+- run it at once with PM2
+- stop it graceful
+
+> This setup was tested on debian
+
+You can use this setup on a Raspberry Pi like me. But: on my Raspberry Pi for some unknown reasons
+the connection between MPD and icecast drops after a random time up to six hours.
+
+# Configuration
+
+ - The app configuration files are stored in `config/`
+ - The folder `prod` contains all needed app config files, required by `config/prod.js`.
+ - Set the environment with in the `.env` file - this equals a configuration root file in `config/`
+ - Set relative or absolute paths. If relative, folder will be created in `storage/...`, `storage` will be created
+ - All created folders will be flushed on app start and all config files will be created again
+ - All Icecast and MPD (per channel) configuration files will be created by the app.
+ - 
+
+# Setup on a Raspberry Pi
+
+## Permissions
 ```bash
 sudo visudo
 ```
@@ -16,11 +38,10 @@ root    ALL=(ALL:ALL) ALL
 pi      ALL=(ALL:ALL) ALL
  
 secure_path="/data/npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
 ```
 
 
-# Folder
+## Folder
 
 ```bash
 # creating main folder
@@ -36,12 +57,13 @@ mkdir storage
 
 ```bash
 cd /data/apps
-git clone ... node-playlist-automation
-cd node-playlist-automation 
+git clone https://github.com/seekwhencer/icecast-mpd-mpc-node.git
+cd icecast-mpd-mpc-node
+npm install
 ```
 
 
-# Icecast2
+## Icecast2
 
 > https://ftp.osuosl.org/pub/xiph/releases/icecast/
 
@@ -70,24 +92,8 @@ cp -R ~/icecast-2.3.99.3/web /data/apps/icecast2/
 cp -R ~/icecast-2.3.99.3/admin /data/apps/icecast2/
 ```
 
-#### edit config
-```bash
-nano /data/apps/icecast2/icecast.xml
-```
 
-change to
-
-```bash
-<basedir>/data/apps/icecast2</basedir>
-<logdir>/data/log</logdir>
-<webroot>/data/apps/icecast2/web</webroot>
-<adminroot>/data/apps/icecast2/admin</adminroot>
-<accesslog>icecast_access.log</accesslog>
-<errorlog>icecast_error.log</errorlog>
-```
-
-
-# MPD + MPC
+## MPD + MPC
 ```bash
 sudo apt-get install mpd mpc -y
 ```
@@ -101,20 +107,18 @@ sudo systemctl disable mpd
 ```bash
 mkdir /data/apps/mpd
 mkdir /data/storage/music
-mkdir /data/storage/playlist
-```
-
-#### Copy Config
-```bash
-cp /data/apps/node-playlist-automation/config/mpd/playlist.conf /data/apps/mpd/
 ```
 
 
-# node.js
+## node.js
 
 ```bash
 # create npm global folder
 mkdir /data/npm-global
+mkdir /data/npm-global/lib
+mkdir /data/npm-global/lib/node_modules
+mkdir /data/npm-global/bin
+mkdir /data/npm-global/share
  
 # env vars
 nano ~/.bashrc
@@ -185,7 +189,7 @@ nano ~/.bashrc
 
 add the same
 
-#### set pm2 start
+#### pm2 system daemon on system start
 ```bash
 # set it
 sudo pm2 startup -u pi
@@ -232,58 +236,17 @@ sudo systemctl daemon-reload
 sudo systemctl start pm2-pi.service
 ```
 
-# run icecast as PM2 daemon
-```bash
-nano /data/apps/icecast2/icecast.sh
-```
+## Running in a Virtual Machine
+
+To use the `Vagrantfile` install:
+
+- Oracle VM VirtualBox
+- Vagrant
+- Vagrant VB Guest Additions 
+
+Then set it up like on the raspberry pi - but replace the user `pi` with the user `vagrant`. Don't forget:
+if you completed the vagrant setup, save the VM state with VirtualBox directly or with a `vagrant halt`.
+To load the VM state, enter `vagrant suspend`.
  
-use this
- 
-```bash
-#!/bin/bash
-/data/apps/icecast2/icecast -c /data/apps/icecast2/icecast.xml
-```
+You can skip the icecast build from source. Inside the VM you can use: `sudo apt-get install icecast2`
 
-add it as daemon, name it as you want
-
-```bash
-sudo chmod +x /data/apps/icecast2/icecast.sh
-pm2 start /data/apps/icecast2/icecast.sh --name "icecast2"
-pm2 logs icecast2
-```
-
-# run mpd as PM2 daemon
-```bash
-sudo systemctl disable mpd
-sudo update-rc.d mpd disable
-sudo rm /lib/systemd/system/mpd.service
-nano /data/apps/mpd/mpd.sh
-```
- 
-use this
- 
-```bash
-#!/bin/bash
-/usr/bin/mpd /data/apps/mpd/playlist.conf --no-daemon --stderr --verbose
-```
-
-add it as daemon, name it as you want
-
-```bash
-sudo chmod +x /data/apps/mpd/mpd.sh
-pm2 start /data/apps/mpd/mpd.sh --name "mpd"
-pm2 logs mpd
-```
-
-# Configuration
-
- - The app configuration file are stored in `config/`, in the root folder of the node app.
- - Inside this folder there will be some folders created by the app: `mpd, icecast`. 
-   But only if needed.
- - The folder `prod` contains needed app config files, required by `prod.js`.
- - Inside the created folder `config/mpd` there will be some subfolder created: `db, pid, playlist, music, log` - if needed (eng. relative)
- - If a path is relative oder absolute, set it in `config/prod/mpd.js` inside the `path` object.
- - If relative, folder will be created in `config/mpd` or `coonfig/icecast`
- - All created folders will be flushed on app start and all config files will be created.
- - All Icecast and MPD (per channel) configuration files will be created by the app.
- 
