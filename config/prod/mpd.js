@@ -3,12 +3,12 @@ module.exports = {
     ready_delay: 200,
     skip_timeout: 10000,
     debug : {
-        stderr : false
+        stderr : true
     },
     path : {
         config : "storage/mpd",
         music: "/data/storage/music",
-        log: "/data/log",
+        log: "storage/mpd/log",
 
         db: "storage/mpd/db",
         pid: "storage/mpd/pid",
@@ -23,9 +23,9 @@ module.exports = {
         pid_file: "/data/apps/mpd/playlist.pid",
         log_file: "/data/log/mpd_playlist.log",
         buffer_before_play: "50%",
-        audio_buffer_size: "16384",
+        audio_buffer_size: 20480,
         port: 6600,
-        log_level: "secure", //verbose
+        log_level: "verbose", // secure
         bind_to_address: "0.0.0.0",
         zeroconf_enabled: "yes",
         zeroconf_name: "piradio",

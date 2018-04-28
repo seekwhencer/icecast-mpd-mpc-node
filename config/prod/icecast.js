@@ -21,9 +21,9 @@ module.exports = {
             sources: 10,
             threadpool: 20,
             "queue-size": 524288,
-            "client-timeout": 30,
-            "header-timeout": 15,
-            "source-timeout": 30,
+            "client-timeout": 60,
+            "header-timeout": 30,
+            "source-timeout": 60,
             "burst-on-connect": 1,
             "burst-size": 65535
         },

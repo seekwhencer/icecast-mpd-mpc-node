@@ -11,7 +11,7 @@ module.exports = [
                 }
             }
         }
-    },
+    }/*,
     {
         name: "2nd Channel",
         autostart: true,
@@ -128,5 +128,5 @@ module.exports = [
                 }
             }
         }
-    }
+    }*/
 ];
