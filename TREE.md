@@ -7,7 +7,7 @@
 global.app_root
 global.environment
 global.config
-global.core
+global.station
 global.storage
 ````
 
@@ -22,13 +22,13 @@ environment
 config
   
 # object
-core
+station
 ```
 
 ### station
 ```bash
 # object 
-core.station
+global.station
  
 # function 
 station.on()
@@ -41,7 +41,7 @@ station.emit()
 ```bash
  
 # object
-core.station.icecast
+global.station.icecast
  
 # function
 icecast.on()
@@ -56,7 +56,7 @@ icecast.options
 ### channels
 ```bash
 # array
-core.station.channels
+global.station.channels
  
 # function
 channels.on
@@ -77,7 +77,7 @@ channels.data
 ### channel
 ```bash
 #channel
-core.station.channels.data[i] = channel
+global.station.channels.data[i] = channel
  
 # string
 channel.id
@@ -188,7 +188,7 @@ mpc.status
 
 ```bash
 # object
-core.storage
+global.storage
  
 # function
 storage.ready()

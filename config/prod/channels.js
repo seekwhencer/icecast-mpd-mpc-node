@@ -3,6 +3,9 @@ module.exports = [
         name: "One",
         autostart: true,
         mpd: {
+            path: {
+                music: "/data/storage/music/electro",
+            },
             config: {
                 port: 6100,
                 audio_output: {
@@ -11,11 +14,14 @@ module.exports = [
                 }
             }
         }
-    }/*,
+    },
     {
-        name: "2nd Channel",
+        name: "Two",
         autostart: true,
         mpd: {
+            path: {
+                music: "/data/storage/music/breaks",
+            },
             config: {
                 port: 6200,
                 audio_output: {
@@ -24,7 +30,7 @@ module.exports = [
                 }
             }
         }
-    },
+    }/*,
     {
         name: "3rd Channel",
         autostart: true,

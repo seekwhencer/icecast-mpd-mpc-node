@@ -1,13 +1,13 @@
 {
-  "name": "playlist-automation",
-  "version": "1.0.0",
-  "description": "This a node.js app to generate smart playlists and start playlist by timetable. Developed by using a Raspberry Pi 3 but usable on every Ubuntu / Debian platform.",
+  "name": "icecast-mod-mpc-node",
+  "version": "0.0.1",
+  "description": "setting up a audio streaming scenario on a raspberry pi or linux machine.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Matthias Kallenbach",
+  "license": "GPL-3.0",
   "dependencies": {
     "deepmerge": "^2.1.0",
     "dotenv": "^5.0.1",
