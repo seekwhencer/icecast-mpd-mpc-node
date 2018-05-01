@@ -18,7 +18,8 @@ router.get('/', function (req, res) {
                 channel_api_base + channel.id + '/stop',
                 channel_api_base + channel.id + '/crossfade/8',
                 channel_api_base + channel.id + '/respawn',
-                channel_api_base + channel.id + '/shutdown'
+                channel_api_base + channel.id + '/shutdown',
+                channel_api_base + channel.id + '/spawn'
             ]
         };
     });

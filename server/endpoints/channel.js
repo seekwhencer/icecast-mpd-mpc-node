@@ -125,7 +125,7 @@ router.get('/:channel/respawn', function (req, res) {
     res.send(channel.name + ' respawning');
 });
 
-// reboot channel
+// shutdown channel
 router.get('/:channel/shutdown', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
     if(!channel){
@@ -134,6 +134,17 @@ router.get('/:channel/shutdown', function (req, res) {
     }
     channel.shutdown();
     res.send(channel.name + ' shutting down');
+});
+
+// spawn channel
+router.get('/:channel/spawn', function (req, res) {
+    var channel = global.station.channels.get('id', req.params.channel);
+    if(!channel){
+        res.send('404');
+        return;
+    }
+    channel.spawn();
+    res.send(channel.name + ' spawning');
 });
 
 module.exports = router;
