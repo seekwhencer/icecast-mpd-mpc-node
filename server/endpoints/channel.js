@@ -125,4 +125,15 @@ router.get('/:channel/respawn', function (req, res) {
     res.send(channel.name + ' respawning');
 });
 
+// reboot channel
+router.get('/:channel/shutdown', function (req, res) {
+    var channel = global.station.channels.get('id', req.params.channel);
+    if(!channel){
+        res.send('404');
+        return;
+    }
+    channel.shutdown();
+    res.send(channel.name + ' shutting down');
+});
+
 module.exports = router;

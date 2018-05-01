@@ -4,5 +4,6 @@ module.exports = {
     mpc: require('./prod/mpc.js'),
     icecast: require('./prod/icecast.js'),
     channels: require('./prod/channels.js'),
-    storage: require('./prod/storage.js')
+    storage: require('./prod/storage.js'),
+    server: require('./prod/server.js'),
 };

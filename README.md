@@ -103,6 +103,16 @@ sudo apt-get install mpd mpc -y
 sudo systemctl disable mpd
 ```
 
+## Build MPD from source (Raspberry Pi)
+
+For me worked version 0.20.19. This is not the version which comes with an apt-get install. So you have to build mpd from source.
+ 
+Run this script:
+```bash
+sudo sh /data/apps/icecast-mpd-mpc-node/config/install_mpd.sh
+```
+
+
 #### Folder
 ```bash
 mkdir /data/storage/music

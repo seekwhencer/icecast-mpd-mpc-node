@@ -2,13 +2,14 @@ const Event = require('events');
 const express = require('express');
 const app = express();
 const channel = require('./endpoints/channel.js');
+const channels = require('./endpoints/channels.js');
 const internal = require('./endpoints/internal.js');
 
 module.exports = function (args) {
     console.log(' INIT WEB APP');
     var event = new Event();
     const defaults = {
-        port : 8090
+        port : global.config.server.port
     };
     if(typeof args === 'object') {
         var options = Object.assign({}, defaults, args);
@@ -18,6 +19,7 @@ module.exports = function (args) {
 
     app.use('/internal', internal);
     app.use('/channel', channel);
+    app.use('/channels', channels);
     app.use('/', express.static('server/static'));
 
     app.use(function (req, res, next) {
@@ -37,7 +39,7 @@ module.exports = function (args) {
         event.emit.apply(event, Array.from(arguments));
     };
     on('ready', function(){
-        console.log(' >>> WEB APP ON PORT', options.port, 'IS UP AND RUNNING');
+        console.log(' >>> WEB APP ON PORT', options.port, 'IS UP AND RUNNING\n');
     });
     return {
         app: app,

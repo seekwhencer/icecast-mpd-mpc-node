@@ -3,7 +3,7 @@ module.exports = {
     ready_delay: 200,
     skip_timeout: 10000,
     debug : {
-        stderr : false
+        stderr : true
     },
     path : {
         config : "storage/mpd",

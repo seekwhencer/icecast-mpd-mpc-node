@@ -26,8 +26,15 @@ apt-get install g++ \
   libicu-dev -y
 
 cd ~/
-wget http://www.musicpd.org/download/mpd/0.20/mpd-0.20.18.tar.xz .
-tar xfv mpd-0.20.18.tar.xz
-cd mpd-0.20.18
+wget http://www.musicpd.org/download/mpd/0.20/mpd-0.20.19.tar.xz .
+tar xfv mpd-0.20.19.tar.xz
+cd mpd-0.20.19
 ./configure
 make
+
+# drop all other mpd programs
+sudo rm /usr/local/bin/mpd
+sudo rm /bin/mpd
+
+# that is the only mpd on your system
+sudo cp  src/mpd /usr/bin/mpd

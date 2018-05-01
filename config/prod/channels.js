@@ -7,14 +7,14 @@ module.exports = [
                 music: "/data/storage/music/electro",
             },
             config: {
-                port: 6100,
+                port: 6110,
                 audio_output: {
                     mount: "/one",
                     port: 8100
                 }
             }
         }
-    },
+    }/*,
     {
         name: "Two",
         autostart: true,
@@ -23,7 +23,7 @@ module.exports = [
                 music: "/data/storage/music/breaks",
             },
             config: {
-                port: 6200,
+                port: 6120,
                 audio_output: {
                     mount: "/two",
                     port: 8100
@@ -32,31 +32,37 @@ module.exports = [
         }
     }/*,
     {
-        name: "3rd Channel",
+        name: "Three",
         autostart: true,
         mpd: {
+            path: {
+                music: "/data/storage/music/jazz",
+            },
             config: {
-                port: 6300,
+                port: 6130,
                 audio_output: {
                     mount: "/three",
                     port: 8100
                 }
             }
         }
-    },
+    }/*,
     {
-        name: "4th Channel",
+        name: "Four",
         autostart: true,
+        path: {
+            music: "/data/storage/music/nightwatch",
+        },
         mpd: {
             config: {
-                port: 6400,
+                port: 6140,
                 audio_output: {
                     mount: "/four",
                     port: 8100
                 }
             }
         }
-    },
+    }/*,
     {
         name: "5th Channel",
         autostart: true,

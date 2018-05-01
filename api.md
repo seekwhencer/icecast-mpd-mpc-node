@@ -1,7 +1,9 @@
 # api definition
 
+> use the google chrome browser with addon "Tabbed Postman" to check how the api works
+
 ## scheme
-> : PORT / command
+> PROTOCOL :// HOST : PORT / COMMAND / PARAMETER(S)
 
 #### default port
 > 8090
@@ -9,7 +11,7 @@
 #### get station stuff
 > / station
 
-#### get channel listing
+#### get channel listing with api endpoints per channel
 > / channels
 
 #### get channel by name
@@ -23,6 +25,9 @@
 
 #### play channel
 > / channel / id / play
+ 
+#### play channel at track number
+> / channel / id / play / number
 
 #### stop channel
 > / channel / id / stop
