@@ -14,7 +14,7 @@ module.exports = [
                 }
             }
         }
-    }/*,
+    },
     {
         name: "Two",
         autostart: true,

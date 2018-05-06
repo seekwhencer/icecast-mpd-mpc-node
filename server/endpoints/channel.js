@@ -1,24 +1,33 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    res.json({});
-});
-
-// channels informations
 router.get('/:channel', function (req, res) {
     var channel = global.station.channels.get(req.params.channel);
-    if(!channel){
-        res.send('404');
-        return;
-    }
-    res.send(channel.name);
+    var channel_api_base = 'http://' + global.config.server.host + ':' + global.config.server.port + '/channel/' + channel.id;
+    var out = {
+        id: channel.id,
+        name: channel.name,
+        api: [
+            channel_api_base + '/update-playlist',
+            channel_api_base + '/load-playlist',
+            channel_api_base + '/skip',
+            channel_api_base + '/play',
+            channel_api_base + '/play/1',
+            channel_api_base + '/pause',
+            channel_api_base + '/stop',
+            channel_api_base + '/crossfade/8',
+            channel_api_base + '/respawn',
+            channel_api_base + '/shutdown',
+            channel_api_base + '/spawn'
+        ]
+    };
+    res.json(out);
 });
 
 // skip track
 router.get('/:channel/skip', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -29,7 +38,7 @@ router.get('/:channel/skip', function (req, res) {
 // update mpc music database
 router.get('/:channel/update-database', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -40,7 +49,7 @@ router.get('/:channel/update-database', function (req, res) {
 // load playlist only
 router.get('/:channel/load-playlist', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -51,7 +60,7 @@ router.get('/:channel/load-playlist', function (req, res) {
 // update playlist and play
 router.get('/:channel/update-playlist', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -62,7 +71,7 @@ router.get('/:channel/update-playlist', function (req, res) {
 // play
 router.get('/:channel/play', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -73,7 +82,7 @@ router.get('/:channel/play', function (req, res) {
 // play track number
 router.get('/:channel/play/:number', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -84,7 +93,7 @@ router.get('/:channel/play/:number', function (req, res) {
 // pause playing
 router.get('/:channel/pause', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -95,7 +104,7 @@ router.get('/:channel/pause', function (req, res) {
 // stop playing
 router.get('/:channel/stop', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -106,7 +115,7 @@ router.get('/:channel/stop', function (req, res) {
 // set crossfade in seconds
 router.get('/:channel/crossfade/:seconds', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -117,7 +126,7 @@ router.get('/:channel/crossfade/:seconds', function (req, res) {
 // reboot channel
 router.get('/:channel/respawn', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -128,7 +137,7 @@ router.get('/:channel/respawn', function (req, res) {
 // shutdown channel
 router.get('/:channel/shutdown', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }
@@ -139,7 +148,7 @@ router.get('/:channel/shutdown', function (req, res) {
 // spawn channel
 router.get('/:channel/spawn', function (req, res) {
     var channel = global.station.channels.get('id', req.params.channel);
-    if(!channel){
+    if (!channel) {
         res.send('404');
         return;
     }

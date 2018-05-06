@@ -9,6 +9,7 @@ router.get('/', function (req, res) {
             id: channel.id,
             name: channel.name,
             api: [
+                channel_api_base + channel.id,
                 channel_api_base + channel.id + '/update-playlist',
                 channel_api_base + channel.id + '/load-playlist',
                 channel_api_base + channel.id + '/skip',

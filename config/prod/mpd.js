@@ -14,7 +14,7 @@ module.exports = {
         pid: "storage/mpd/pid",
         playlist: "storage/playlist"
     },
-
+    db_filename: 'shared',
     config: {
         user: "pi",
         playlist_directory: "/data/storage/playlist",
@@ -45,7 +45,9 @@ module.exports = {
         audio_output: {
             type: "alsa",
             name: "fake out",
-            driver: "null"
+            driver: "software",
+            device:"hw:0,0"
         }
     }
 };
+

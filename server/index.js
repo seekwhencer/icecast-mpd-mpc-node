@@ -1,6 +1,7 @@
 const Event = require('events');
 const express = require('express');
 const app = express();
+const station = require('./endpoints/station.js');
 const channel = require('./endpoints/channel.js');
 const channels = require('./endpoints/channels.js');
 const internal = require('./endpoints/internal.js');
@@ -18,6 +19,7 @@ module.exports = function (args) {
     }
 
     app.use('/internal', internal);
+    app.use('/station', station);
     app.use('/channel', channel);
     app.use('/channels', channels);
     app.use('/', express.static('server/static'));
