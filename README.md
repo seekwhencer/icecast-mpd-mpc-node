@@ -1,4 +1,4 @@
-# node-playlist-automation
+# icecast-mpd-mpc-node
 
 With this app:
 
@@ -292,3 +292,102 @@ But beware: if you're destroying the vm, all installed things gone lost - except
 After this you have to repeat the whole setup. :)  yay!
 
 
+#### Bluetooth on raspberry pi
+
+##### Device
+```bash
+# Check MAC-Address
+sudo bluetoothctl
+ 
+# Scan for your device. Make sure that the device is in pairing mode.
+agent on
+default-agent
+scan on
+ 
+# Wait a while… after a few seconds, you’re getting the MAC address of your device. After that, you can stop the scanning.
+scan off
+ 
+# Now: pair and trust
+pair XX:XX:XX:XX:XX:XX
+trust XX:XX:XX:XX:XX:XX
+connect XX:XX:XX:XX:XX:XX
+ 
+# Now you can exit the bluetoothctl program - and forget it. For now when the system starts, the Raspberry Pi connects automatically with your device.
+ex it
+```
+
+##### Global ALSA Config
+```bash
+# Create global alsa config, not to user pi
+sudo nano /etc/asound.conf
+
+``` 
+With this content
+```bash
+
+defaults.bluealsa {
+     interface "hci0"
+     device "XX:XX:XX:XX:XX:XX"
+     profile "a2dp"
+}
+ 
+pcm.bluetooth {
+  type plug
+  slave {
+    pcm {
+      type bluealsa
+      device XX:XX:XX:XX:XX:XX
+      profile "a2dp"
+    }
+  }
+  hint {
+    show on
+    description "changeme"
+  }
+}
+ 
+ctl.bluetooth {
+  type bluealsa
+}
+```
+
+##### Bluetooth Service
+
+Edit the service
+```bash
+sudo nano /etc/systemd/system/bluetooth.target.wants/bluetooth.service
+``` 
+Change line
+```bash
+ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap
+```
+Reload Daemon
+```bash
+sudo systemctl deamon-reload
+```
+Service Restart
+```bash
+sudo systemctl restart bluetooth.service
+```
+
+##### bluealsa Service
+Install it
+```bash
+sudo apt-get install bluealsa
+```
+Edit the Service
+```bash
+sudo nano /lib/systemd/system/bluealsa.service
+```
+Change line
+```bash
+ExecStart=/usr/bin/bluealsa --disable-hfp
+```
+Reload Daemon
+```bash
+sudo systemctl deamon-reload
+```
+Service Restart
+```bash
+sudo systemctl restart bluealsa.service
+```

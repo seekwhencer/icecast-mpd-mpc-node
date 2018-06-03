@@ -1,214 +1,264 @@
 # public tree
 
 ### global
-````bash
-# put before all lines:
- 
+```javascript
+// absolute app root folder
 global.app_root
+ 
+// ENV var to set prod or dev
 global.environment
+ 
+// the whole config tree
 global.config
+ 
+// the station with channels
 global.station
+ 
+// the storage toolset
 global.storage
-````
-
-```bash
-# string
-app_root
- 
-# string
-environment
- 
-# object
-config
-  
-# object
-station
 ```
 
 ### station
-```bash
-# object 
+```javascript
+// object 
 global.station
  
-# function 
+// function 
 station.on()
  
-# function
+// function
 station.emit()
 ```
 
 ### icecast
-```bash
+```javascript
  
-# object
-global.station.icecast
+// object
+icecast = global.station.icecast
  
-# function
+// function
 icecast.on()
  
-# function
+// function
 icecast.emit()
  
-# object
+// object
 icecast.options
 ```
 
 ### channels
-```bash
-# array
-global.station.channels
+```javascript
+// array
+channels = global.station.channels
  
-# function
+// function
 channels.on
   
-# function
+// function
 channels.emit
   
-# function
+// function
 channels.checkready
  
-# object
+// object
 channels.options
  
-# array
+// array
 channels.data
 ```
 
 ### channel
-```bash
-#channel
-global.station.channels.data[i] = channel
+```javascript
+//channel
+channel = global.station.channels.data[index]
+channel = global.station.channels.get('id', 'channel_id')
+
  
-# string
+// string
 channel.id
  
-# boolean
+// boolean
 channel.ready
  
-# function
+// function
 channel.on
  
-# function
+// function
 channel.emit
  
-# function
+// function
 channel.saveConfigMPD
  
-# function
+// function
 channel.updateDatabase
  
-# function
+// function
 channel.loadPlaylist
  
-# function
+// function
 channel.updatePlaylist
  
-# function
+// function
 channel.setCrossfade
  
-# function
+// function
 channel.play
  
-# function
+// function
 channel.repeat
  
-# object
+// object
 channel.options
  
-# object
+// object
 channel.mpd
  
-# object
+// object
 channel.mpc
 
 ```
 
 ### mpd
 
-````bash
-# mpd per channel
-channel.mpd
+````javascript
+// mpd per channel
+mpd = channel.mpd
  
-# function
+// function
 mpd.on
  
-# function
+// function
 mpd.emit
  
-# function
+// function
 mpd.saveConfig
  
-# function
+// function
 mpd.ready
  
-# function
+// function
 mpd.getOptions
 ````
 
 ### mpc
 
-````bash
-channel.mpc
+````javascript
+
+// the music player client object for this channel
+mpc = channel.mpc
   
-# function
+// function
 mpc.on
  
-# function
+// function
 mpc.emit
  
-# function
+// function
 mpc.ready
  
-# function
+// function
 mpc.getOptions
  
-# function
+// function
 mpc.updateDatabase
  
-# function
+// function
 mpc.loadPlaylist
  
-# function
+// function
 mpc.updatePlaylist
  
-# function
+// function
 mpc.setCrossfade
  
-# function
+// function
 mpc.play
  
-# function
+// function
 mpc.repeat
   
-# function
+// function
 mpc.status
 ````
 
+### shows
+```javascript
+// the listing object
+shows = channel.shows
+
+// the list as array
+shows.data[index]
+
+// getting one or matched show item (s)
+shows.get('id', 'show_id')
+
+// the parent channel object from this point
+shows.channel
+
+```
+
+### show (one item)
+
+```javascript
+// one show item
+show = shows.data[index]
+show = shows.get('id', 'show_id')
+ 
+// string
+show.id
+ 
+// string
+show.name
+ 
+//  string
+show.slug
+ 
+// the plalist object for the show
+show.playlist
+ 
+// parent shows object from this point
+show.shows
+ 
+// parent channel object from this point
+show.channel
+```
+
+### playlist
+
+```javascript
+// the playlist object of the show
+playlist = show.playlist
+ 
+// generate the playlist function
+playlist.generate
+
+```
+
 ### storage
 
-```bash
-# object
-global.storage
+```javascript
+// object
+storage = global.storage
  
-# function
+// function
 storage.ready()
  
-# function
+// function
 storage.on()
  
-# function
+// function
 storage.emit()
  
-# function
+// function
 storage.fetchChannels()
  
-# function
+// function
 storage.fetchMusic()
 ```
 
 # events
 
-```bash
+```javascript
 station.on('ready', function(){});
 station.on('saved-runscript', function(runscript_file){});
 icecast.on('ready', function(){});

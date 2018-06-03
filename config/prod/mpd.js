@@ -7,7 +7,7 @@ module.exports = {
     },
     path : {
         config : "storage/mpd",
-        music: "/data/storage/music",
+        music: "/data/storage/station/music",
         log: "storage/mpd/log",
 
         db: "storage/mpd/db",
@@ -18,7 +18,7 @@ module.exports = {
     config: {
         user: "pi",
         playlist_directory: "/data/storage/playlist",
-        music_directory: "/data/storage/music",
+        music_directory: "/data/storage/station/music",
         db_file: "/data/apps/mpd/mpd.cache",
         pid_file: "/data/apps/mpd/playlist.pid",
         log_file: "/data/log/mpd_playlist.log",
@@ -42,11 +42,12 @@ module.exports = {
         }
     },
     config_file_end: {
-        audio_output: {
+	    audio_output: {
             type: "alsa",
-            name: "fake out",
-            driver: "software",
-            device:"hw:0,0"
+            name: "audio out",
+            device: "bluetooth",
+	        format: "44100:16:2",
+	        driver: "software"
         }
     }
 };

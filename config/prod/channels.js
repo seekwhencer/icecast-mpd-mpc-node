@@ -4,7 +4,7 @@ module.exports = [
         autostart: true,
         mpd: {
             path: {
-                music: "/data/storage/music/electro",
+                music: "/data/storage/station"
             },
             config: {
                 port: 6110,
@@ -14,7 +14,7 @@ module.exports = [
                 }
             }
         }
-    },
+    }/*,
     {
         name: "Two",
         autostart: true,

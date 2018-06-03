@@ -2,12 +2,12 @@ require('dotenv').config();
 var Storage = require('./lib/storage.js');
 var Station = require('./lib/station.js');
 var Server = require('./server/index.js');
-
+var Buttons = require('./lib/buttons.js');
 global.app_root = process.env.PWD;
 global.environment = process.env.NODE_ENV || 'prod';
 global.config = require('./config/' + global.environment + '.js');
 
-function initStorage(){
+function initStorage() {
     global.storage = new Storage();
     global.storage.on('ready', function () {
         initStation();
@@ -16,13 +16,26 @@ function initStorage(){
 
 function initStation() {
     global.station = new Station();
-    global.station.on('ready', function(){
+    global.station.on('ready', function () {
         initServer();
+
     });
 }
 
 function initServer() {
     global.server = new Server();
+    global.server.on('ready', function(){
+        if(global.config.station.buttons_enable === true) {
+            initButtons();
+        } else {
+            // without a button
+            global.station.channels.data[0].shows.data[0].playlist.generate();
+        }
+    });
+}
+
+function initButtons() {
+    global.buttons = new Buttons();
 }
 
 process.on('SIGINT', function () {
