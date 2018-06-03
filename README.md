@@ -292,9 +292,9 @@ But beware: if you're destroying the vm, all installed things gone lost - except
 After this you have to repeat the whole setup. :)  yay!
 
 
-#### Bluetooth on raspberry pi
+## Bluetooth on raspberry pi
 
-##### Device
+#### Device
 ```bash
 # Check MAC-Address
 sudo bluetoothctl
@@ -316,9 +316,9 @@ connect XX:XX:XX:XX:XX:XX
 ex it
 ```
 
-##### Global ALSA Config
+#### Global ALSA Config
+Create global alsa config, not to user pi
 ```bash
-# Create global alsa config, not to user pi
 sudo nano /etc/asound.conf
 
 ``` 
@@ -351,7 +351,7 @@ ctl.bluetooth {
 }
 ```
 
-##### Bluetooth Service
+#### Bluetooth Service
 
 Edit the service
 ```bash
