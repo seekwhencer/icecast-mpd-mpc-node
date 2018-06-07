@@ -4,7 +4,7 @@ module.exports = {
         {
             pin: 11,
             onchange: function (buttons) {
-
+                global.station.channels.data[buttons.channel_index].updateDatabase();
             }
         },
         {

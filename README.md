@@ -10,8 +10,8 @@ With this app:
 
 > This setup was tested on debian
 
-You can use this setup on a Raspberry Pi like me. But: on my Raspberry Pi for some unknown reasons
-the connection between MPD and icecast drops after a random time up to six hours.
+You can use this setup on a Raspberry Pi like me. But on a Raspberry Pi only one stream is stable.
+Multiple streams / mpd instances are not stable 
 
 # Configuration
 

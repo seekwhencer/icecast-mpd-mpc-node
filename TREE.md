@@ -21,13 +21,28 @@ global.storage
 ### station
 ```javascript
 // object 
-global.station
+station = global.station
  
-// function 
-station.on()
+// array
+station.channels
+ 
+// object
+station.icecast
  
 // function
-station.emit()
+station.flushStorage
+ 
+// function
+station.updateDatabases
+ 
+// function
+station.shutdown
+```
+
+> Events
+```javascript
+ready
+saved-runscript (runscript_file)
 ```
 
 ### icecast
@@ -36,14 +51,14 @@ station.emit()
 // object
 icecast = global.station.icecast
  
-// function
-icecast.on()
- 
-// function
-icecast.emit()
- 
 // object
 icecast.options
+```
+
+> Events
+```javascript
+ready
+saved (the icecast object)
 ```
 
 ### channels
@@ -51,40 +66,35 @@ icecast.options
 // array
 channels = global.station.channels
  
+// array
+channels.data
+ 
 // function
-channels.on
-  
-// function
-channels.emit
-  
+channels.get('key','value')
+ 
 // function
 channels.checkready
  
 // object
 channels.options
- 
-// array
-channels.data
 ```
 
 ### channel
 ```javascript
 //channel
-channel = global.station.channels.data[index]
-channel = global.station.channels.get('id', 'channel_id')
-
+channel = channels.data[index]
+channel = channels.get('id', 'channel-id-hash')
+channel = channels.get('slug', 'name-the-show')
+ 
  
 // string
 channel.id
  
 // boolean
-channel.ready
+channel.ready 
  
-// function
-channel.on
- 
-// function
-channel.emit
+// array
+channel.shows
  
 // function
 channel.saveConfigMPD
@@ -105,7 +115,22 @@ channel.setCrossfade
 channel.play
  
 // function
-channel.repeat
+channel.pause
+ 
+// function
+channel.skip
+ 
+// function
+channel.stop
+ 
+// function
+channel.shutdown 
+ 
+// function
+channel.spawn 
+ 
+// function
+channel.respawn
  
 // object
 channel.options
@@ -185,13 +210,13 @@ mpc.status
 ```javascript
 // the listing object
 shows = channel.shows
-
+ 
 // the list as array
 shows.data[index]
-
+ 
 // getting one or matched show item (s)
 shows.get('id', 'show_id')
-
+ 
 // the parent channel object from this point
 shows.channel
 
@@ -254,20 +279,4 @@ storage.fetchChannels()
  
 // function
 storage.fetchMusic()
-```
-
-# events
-
-```javascript
-station.on('ready', function(){});
-station.on('saved-runscript', function(runscript_file){});
-icecast.on('ready', function(){});
-icecast.on('saved', function(){});
-channel.on('ready', function(){});
-channel.on('saved-json', function(){});
-channel.on('saved-playlist', function(){});
-channel.mpd.on('ready', function(){});
-channel.mpd.on('saved-config', function(){});
-channel.mpd.on('data', function(){});
-channel.mpc.on('ready', function(){});
 ```

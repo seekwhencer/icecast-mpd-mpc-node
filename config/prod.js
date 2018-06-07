@@ -9,5 +9,9 @@ module.exports = {
     buttons: require('./prod/buttons.js'),
     shows: require('./prod/shows.js'),
     show: require('./prod/show.js'),
-    playlist: require('./prod/playlist.js')
+    playlist: require('./prod/playlist.js'),
+    inputs: require('./prod/inputs.js'),
+    input: require('./prod/input.js'),
+    darkice: require('./prod/darkice.js'),
+    ffmix: require('./prod/ffmix.js'),
 };
