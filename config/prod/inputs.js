@@ -1,4 +1,5 @@
 module.exports = {
+    enable: true,
     path: 'inputs',
     load: true,
     generate_from_config: false,
@@ -20,7 +21,7 @@ module.exports = {
             source_channel: 0,
             name_addition: 'Mix',
             endpoint_addition: '-mix',
-            retry: 2
+            respawn_delay: 5
         }
     }]
 };

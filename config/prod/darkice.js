@@ -1,6 +1,8 @@
 module.exports = {
     bin: "/usr/bin/darkice",
     path: "darkice",
+    respawn_on_fail: true,
+    respawn_delay: 5,
     config: {
         general: {
             duration: 0,

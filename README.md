@@ -2,8 +2,10 @@
 
 With this app:
 
-- generate configuration files for icecast2 audio streaming server
-- generate configuration files for music player daemon (MPD)
+- generate configuration files for [icecast2](https://github.com/xiph/Icecast-Server) audio streaming server | [Website](http://icecast.org)
+- generate configuration files for [music player daemon (MPD)](https://github.com/MusicPlayerDaemon/MPD) | [Website](https://www.musicpd.org)
+- generate configuration files for [darkice](https://github.com/rafael2k/darkice) | [Website](http://www.darkice.org)
+- for talk over mixing two streams in realtime using [ffmpeg](https://github.com/FFmpeg/FFmpeg) | [Website](https://www.ffmpeg.org)
 - create multiple streams as endpoints as channels
 - run it at once with PM2
 - stop it graceful
@@ -320,7 +322,6 @@ ex it
 Create global alsa config, not to user pi
 ```bash
 sudo nano /etc/asound.conf
-
 ``` 
 With this content
 ```bash
@@ -361,12 +362,9 @@ Change line
 ```bash
 ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap
 ```
-Reload Daemon
+Reload and restart Daemon
 ```bash
 sudo systemctl deamon-reload
-```
-Service Restart
-```bash
 sudo systemctl restart bluetooth.service
 ```
 
@@ -383,11 +381,30 @@ Change line
 ```bash
 ExecStart=/usr/bin/bluealsa --disable-hfp
 ```
-Reload Daemon
+Reload and restart Daemon
 ```bash
 sudo systemctl deamon-reload
-```
-Service Restart
-```bash
 sudo systemctl restart bluealsa.service
 ```
+
+#### Darkice
+
+Install it
+```bash
+sudo apt-get install darkice
+``` 
+Name the external USB audio input device by editing the global asound.conf
+```bash
+sudo nano /etc/asound.conf
+``` 
+Add this
+```bash
+pcm.external {
+  type plug slave {
+    pcm "hw:1,0"
+  }
+}
+```
+
+#### The buttons
+

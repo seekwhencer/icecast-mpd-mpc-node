@@ -1,5 +1,6 @@
 module.exports = {
     interrupt: 10, // ms
+    channel_index: 0,
     buttons: [
         {
             pin: 11,

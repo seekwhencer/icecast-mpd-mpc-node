@@ -3,7 +3,9 @@ module.exports = {
     bin: "/data/apps/icecast2/icecast",
     autostart: true,
     checkup_delay: 500,
+    status_delay: 500,
     run: '',
+    status_endpoint: 'json.xsl',
     path: {
         config: "storage/icecast",
         basedir: "/data/apps/icecast2",
