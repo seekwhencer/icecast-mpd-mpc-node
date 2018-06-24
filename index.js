@@ -32,16 +32,12 @@ function initServer() {
             // without a button
             global.station.channels.data[0].shows.data[0].playlist.generate();
         }
-        initInputs();
+        global.station.channels.data[0].initPlaylist();
     });
 }
 
 function initButtons() {
     global.buttons = new Buttons();
-}
-
-function initInputs() {
-    global.inputs = new Inputs();
 }
 
 process.on('SIGINT', function () {

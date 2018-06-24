@@ -2,6 +2,7 @@ module.exports = [
     {
         name: "One",
         autostart: true,
+        input_index : 0,
         mpd: {
             path: {
                 music: "/data/storage/station"

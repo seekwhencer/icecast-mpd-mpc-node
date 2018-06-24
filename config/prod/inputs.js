@@ -1,5 +1,5 @@
 module.exports = {
-    enable: true,
+    enable: false,
     path: 'inputs',
     load: true,
     generate_from_config: false,

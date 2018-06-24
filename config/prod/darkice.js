@@ -1,4 +1,5 @@
 module.exports = {
+    enable: false,
     bin: "/usr/bin/darkice",
     path: "darkice",
     respawn_on_fail: true,

@@ -1,4 +1,5 @@
 module.exports = {
+    enable: false,
     bin: '/usr/bin/ffmpeg',
     source_channel: 0,
     name_addition: 'Mix',
