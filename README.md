@@ -1,5 +1,7 @@
 # icecast-mpd-mpc-node
 
+![ScreenShot](/docs/berlin_sunset.png?raw=true "a debian in the wild")
+
 With this app:
 
 - generate configuration files for [icecast2](https://github.com/xiph/Icecast-Server) audio streaming server | [Website](http://icecast.org)
