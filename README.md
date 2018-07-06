@@ -24,8 +24,6 @@ Multiple streams / mpd instances are not stable
  - The folder `prod` contains all needed app config files, required by `config/prod.js`.
  - Set the environment with in the `.env` file - this equals a configuration root file in `config/`
  - Set relative or absolute paths. If relative, folder will be created in `storage/...`, `storage` will be created
- - All created folders will be flushed on app start and all config files will be created again
- - All Icecast and MPD (per channel) configuration files will be created by the app.
  - "Backend for Frontend" Service with REST Api.
 
 # Installation
