@@ -28,6 +28,22 @@ Multiple streams / mpd instances are not stable
  - All Icecast and MPD (per channel) configuration files will be created by the app.
  - "Backend for Frontend" Service with REST Api.
 
+# Installation
+
+```bash
+    git clone https://github.com/seekwhencer/icecast-mpd-mpc-node.git station
+    cd station
+    npm install
+```
+# Dependencies
+
+ - [icecast2](#icecast2)
+ - [music player daemon (MPD) and music player client (MPC)](#mpd)
+ - [darkice](#darkice)
+ - [ffmpeg](#ffmpeg)
+ - [pm2](#pm2)
+ - [blueasla](#bluealsa)
+
 # Setup on a Raspberry Pi
 
 ## Permissions
@@ -68,7 +84,7 @@ npm install
 ```
 
 
-## Icecast2
+## <a name="icecast2"></a>Icecast2
 
 > https://ftp.osuosl.org/pub/xiph/releases/icecast/
 
@@ -130,7 +146,7 @@ Use this content
 ```
 
 
-## MPD + MPC
+## <a name="mpd"></a><a name="mpc"></a> MPD + MPC
 ```bash
 sudo apt-get install mpd mpc -y
 ```
@@ -156,7 +172,7 @@ mkdir /data/storage/music
 ```
 
 
-## node.js
+## <a name="nodejs"></a>node.js
 
 ```bash
 # create npm global folder
@@ -208,7 +224,7 @@ n latest
 sudo reboot
 ```
 
-## PM2
+## <a name="pm2"></a>PM2
 ```bash
 # install it
 npm install pm2 -g
@@ -328,7 +344,7 @@ But beware: if you're destroying the vm, all installed things gone lost - except
 After this you have to repeat the whole setup. :)  yay!
 
 
-## Bluetooth on raspberry pi
+## <a name="bluetooth"></a>Bluetooth on raspberry pi
 
 #### Device
 ```bash
@@ -402,7 +418,7 @@ sudo systemctl deamon-reload
 sudo systemctl restart bluetooth.service
 ```
 
-## bluealsa Service
+## <a name="bluealsa"></a>bluealsa Service
 Install it
 ```bash
 sudo apt-get install bluealsa
@@ -421,7 +437,7 @@ sudo systemctl deamon-reload
 sudo systemctl restart bluealsa.service
 ```
 
-## Darkice
+## <a name="darkice"></a>Darkice
 
 Install it
 ```bash
@@ -440,5 +456,6 @@ pcm.external {
 }
 ```
 
-#### The buttons
+## The Buttons
 
+... follows
