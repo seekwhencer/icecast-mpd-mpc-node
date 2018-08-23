@@ -2,3 +2,7 @@
 node_modules
 storage
 .vagrant
+playbook.retry
+*.box
+*-lock.json
+*.log.*
