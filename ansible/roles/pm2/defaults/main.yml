@@ -7,6 +7,4 @@ pm2_npm_name: "pm2"
 pm2_npm_production: "yes"
 pm2_user: "vagrant"
 pm2_service_name: "pm2-vagrant.service"
-pm2_supported_distro_list:
-  - "stretch"
 pm2_version: "2.10.4"

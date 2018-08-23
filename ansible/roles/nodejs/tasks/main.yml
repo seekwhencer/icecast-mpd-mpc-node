@@ -1,8 +1,9 @@
 - name: CHOWN /usr/local
   command: |
-    chown -R vagrant "{{item}}"
+    chown -R "{{nodejs_install_npm_user}}":"{{nodejs_install_npm_user}}" "{{item}}"
   with_items:
     - "/usr/local"
+    - "/data"
   become: yes
 
 - name: INSTALLING DISTRO NodeJS
@@ -45,7 +46,7 @@
   environment:
     NPM_CONFIG_PREFIX: "{{ npm_config_prefix }}"
     NODE_PATH: "{{ npm_config_prefix }}/lib/node_modules"
-    NPM_CONFIG_UNSAFE_PERM: "{{ npm_config_unsafe_perm }}"
+#    NPM_CONFIG_UNSAFE_PERM: "{{ npm_config_unsafe_perm }}"
   with_items: "{{ nodejs_npm_global_packages }}"
 
 - name: CHANGING NODEJS VERSION BY GIVEN nodejs_version WITH N

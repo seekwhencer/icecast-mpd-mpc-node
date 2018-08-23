@@ -9,10 +9,11 @@
     recurse: yes
   become: yes
 
-- name: ADDING PM2_HOME VARIABLE TO .bashrc
+- name: ADDING PM2_HOME
   lineinfile:
-    dest: ~/.bashrc
+    dest: /etc/profile.d/npm.sh
     line: export PM2_HOME={{pm2_home}}
+  become: yes
 
 - name: CREATING PM2 STARTUP SCRIPT BY USING A SERVICE TEMPLATE
   template:
@@ -21,8 +22,17 @@
     mode: 0777
   become: yes
 
+- name: STOPPING PM2
+  shell:
+    cmd: "{{pm2_bin}} kill"
+
 - name: UPDATING PM2
-  command: "{{pm2_bin}} update"
+  shell:
+    cmd: "{{pm2_bin}} update"
+  environment:
+    PM2_HOME: "{{pm2_home}}"
+  become: yes
+  become_user: "{{pm2_user}}"
 
 - name: SERVICE DAEMON RELOAD
   command: systemctl daemon-reload
@@ -34,7 +44,18 @@
     state: restarted
   become: yes
 
+- name: CHOWN THE WHOLE DATA FOLDER
+  shell:
+    cmd: chown -R "{{pm2_user}}":"{{pm2_user}}" "{{item}}"
+  with_items:
+    - "/data"
+  become: yes
+
 - name: ADDING THE APP TO PM2
   shell:
-    cmd: "{{pm2_bin}} start index.js -n station"
+    cmd: "{{pm2_bin}} start index.js -n station -f"
     chdir: "{{pm2_app_folder}}"
+  environment:
+      PM2_HOME: "{{pm2_home}}"
+  become: yes
+  become_user: "{{pm2_user}}"
