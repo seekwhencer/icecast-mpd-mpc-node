@@ -19,7 +19,9 @@ Vagrant.configure("2") do |config|
     # music player daemon
     config.vm.network "forwarded_port", guest: 6100, host: 6100, host_ip: "127.0.0.1"
 
-    config.vm.synced_folder ".", "/data/apps/station", id: "vagrant-root", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
+    config.vm.synced_folder ".", "/data/apps/station", id: "app-folder", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
+    config.vm.synced_folder "D:/Data/Music/station", "/data/audio", id: "audio-folder", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
+
     config.vm.boot_timeout = 900
 
     config.vm.provider "virtualbox" do |v|
@@ -38,7 +40,7 @@ Vagrant.configure("2") do |config|
 
     # Run Ansible from the Vagrant VM
     config.vm.provision "ansible_local" do |ansible|
-        ansible.playbook = "/data/apps/station/ansible/vm.yml"
+        ansible.playbook = "/data/apps/station/ansible/vagrant.yml"
 #        ansible.verbose = "v"
         ansible.provisioning_path = "/data/apps/station/ansible"
     end

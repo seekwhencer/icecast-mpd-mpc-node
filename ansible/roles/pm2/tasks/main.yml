@@ -53,7 +53,7 @@
 
 - name: ADDING THE APP TO PM2
   shell:
-    cmd: "{{pm2_bin}} start index.js -n station -f"
+    cmd: "{{pm2_bin}} start ecosystem.config.js --env vagrant"
     chdir: "{{pm2_app_folder}}"
   environment:
       PM2_HOME: "{{pm2_home}}"

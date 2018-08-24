@@ -1,0 +1,17 @@
+module.exports = {
+    station: require('./vagrant/station.js'),
+    mpd: require('./vagrant/mpd.js'),
+    mpc: require('./vagrant/mpc.js'),
+    icecast: require('./vagrant/icecast.js'),
+    channels: require('./vagrant/channels.js'),
+    storage: require('./vagrant/storage.js'),
+    server: require('./vagrant/server.js'),
+    buttons: require('./vagrant/buttons.js'),
+    shows: require('./vagrant/shows.js'),
+    show: require('./vagrant/show.js'),
+    playlist: require('./vagrant/playlist.js'),
+    inputs: require('./vagrant/inputs.js'),
+    input: require('./vagrant/input.js'),
+    darkice: require('./vagrant/darkice.js'),
+    ffmix: require('./vagrant/ffmix.js'),
+};
