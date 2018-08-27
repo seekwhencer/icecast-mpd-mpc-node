@@ -6,11 +6,25 @@ const channel = require('./endpoints/channel.js');
 const channels = require('./endpoints/channels.js');
 const internal = require('./endpoints/internal.js');
 
+/*
+var express = require('express');
+var app = express();
+httpServer = require('http').createServer(app);
+httpServer.listen('3333');
+// Then close the server when done...
+httpServer.close();
+ */
+
+
 module.exports = function (args) {
     console.log(' INIT WEB APP');
     var event = new Event();
+    var server = null;
+    var httpServer = require('http').createServer(app);
+
     const defaults = {
-        port : global.config.server.port
+        port : global.config.server.port,
+        host: global.config.server.host
     };
     if(typeof args === 'object') {
         var options = Object.assign({}, defaults, args);
@@ -30,7 +44,7 @@ module.exports = function (args) {
         res.json(err);
     });
 
-    app.listen(options.port, function () {
+    httpServer.listen(options.port, options.host, function () {
         emit('ready');
     });
 
@@ -45,6 +59,7 @@ module.exports = function (args) {
     });
     return {
         app: app,
+        httpServer: httpServer,
         on: on,
         emit: emit
     };

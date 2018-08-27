@@ -4,7 +4,7 @@ module.exports = {
     skip_timeout: 10000,
     bluetooth: false,
     debug : {
-        stderr : false
+        stderr : true
     },
     path : {
         config : "storage/mpd",

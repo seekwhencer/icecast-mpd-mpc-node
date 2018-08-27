@@ -47,12 +47,16 @@ a folder on your disk where the mp3 files are stored.
 config.vm.synced_folder "CHANGE/ME", "/data/audio", id: "audio-folder", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=664"]
 ```
 
+
 Then you can run it:
 
 ```bash
 # run it
 vagrant up
 ```
+
+> HINT: after a machine reboot (`sudo reboot now`), on windows it could be that all shared folder are not mounted.
+> For that, enter: `vagrant reload`
 
 ### Done
 
@@ -85,3 +89,6 @@ vagant resume
 # destroy and re-up
 vagrant destroy --force && vagrant up
 ```
+
+> HINT: If you are starting and stopping and starting and stopping the node app - it could be, that node says on any port: `ADDRINUSE`.
+> On this point anything is crashed. Do a `sudo reboot now` - and all is fine.
